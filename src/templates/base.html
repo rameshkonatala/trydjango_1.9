@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
 	<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+	{% block head_extra %}{% endblock head_extra %}
 </head>
 <body>
 <div id="fb-root"></div>
@@ -40,13 +41,15 @@
 
 <script type="text/javascript">
 	$(document).ready(function(){
-	$(".content-markdown").each(function(){
-		var content = $(this).text()
-		console.log(content)
-		var markedContent = marked(content)
-		console.log(markedContent)
-		$(this).html(markedContent)
-		})
+		$(".content-markdown").each(function(){
+			var content = $(this).text()
+			var markedContent = marked(content)
+			$(this).html(markedContent);
+			})
+
+		$(".post-detail-item img").each(function(){
+			$(this).addClass("img-responsive");
+			})
 	})
 </script>
 
