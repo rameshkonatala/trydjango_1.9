@@ -40,9 +40,12 @@ INSTALLED_APPS = [
     #third party
     'pagedown',
     'markdown_deux',
+    'crispy_forms',
     #local
     'posts',
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
