@@ -4,7 +4,7 @@
 {% block head_title %}{{ instance.title }} | {{ block.super }}{% endblock head_title %}
 
 {% block content %}
-<div class="col-sm-8 col-sm-offset-2">
+<div class="col-sm-8 col-sm-offset-2 ">
 	{% if instance.image %}
 	<img src="{{ instance.image.url }}" class="img-responsive"/>
 	{% endif %}
@@ -13,9 +13,9 @@
 {% if instance.user.get_full_name %}
 <p>Author: {{instance.user.get_full_name}}</p>
 {% endif %}
-
-{{instance.content | linebreaks}}<br/>
-
+<div class="content-markdown">
+{{instance.content}}<br/>
+</div>
 
 <p><div class="fb-like" data-href="{{request.build_absolute_uri}}" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div></p>
 
