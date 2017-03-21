@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 {% load urlify %}
 
 {% block head_title %}{{ instance.title }} | {{ block.super }}{% endblock head_title %}
@@ -31,13 +32,18 @@ Linkedin
 <hr>
 <div>
 	<p class="lead">Comments</p>
+	<form method="POST" action=".">{% csrf_token %}
+		{{ comment_form|crispy }}	
+		<input type="submit" name="Post comment" class="btn btn-default">
+	</form>
+	
+	<hr>
 	{% for comment in comments %}
-		<div class=''>
-			{{ comment.content }}
-			<br>
-			<small>via {{ comment.user }} | {{ comment.timestamp|timesince }} ago</small>
-			<hr>
-		</div>
+	<blockquote>
+		<p>{{ comment.content }}</p>
+		<footer>via {{ comment.user }} | {{ comment.timestamp|timesince }} ago</footer>
+	</blockquote>
+	<hr>
 	{% endfor %}
 	
 	
