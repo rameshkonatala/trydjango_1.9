@@ -14,7 +14,6 @@ from comments.models import Comment
 from comments.forms import CommentForm
 # Create your views here.
 
-
 def post_create(request):
 	if not request.user.is_staff or not request.user.is_superuser:
 		raise Http404
@@ -40,6 +39,7 @@ def post_detail(request,slug):
 			raise Http404
 	share_string = quote_plus(instance.content)
 		
+	
 	initial_data = {
 			"content_type":instance.get_content_type,
 			"object_id":instance.id
